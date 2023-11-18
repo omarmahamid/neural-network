@@ -82,7 +82,11 @@ public class NeuralNetwork {
     public Matrix feedforward(Matrix in) {
         lastActivations[0] = in;
         for (int i = 0; i < size - 1; i++) {
-            lastValues[i] = weights[i].mulMat(lastActivations[i]).addVec(biases[i]);
+
+            lastValues[i] = weights[i]
+                    .mulMat(lastActivations[i])
+                    .addVec(biases[i]);
+
             lastActivations[i + 1] = activationFunction.calculateMat(lastValues[i]);
         }
         return lastActivations[size - 1];
