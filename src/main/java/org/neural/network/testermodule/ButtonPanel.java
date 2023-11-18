@@ -342,7 +342,7 @@ public class ButtonPanel extends JPanel {
                 }
 
                 BufferedImage cutImage = new BufferedImage(eCut - wCut, sCut - nCut, BufferedImage.TYPE_INT_ARGB_PRE);
-                ((Graphics2D) cutImage.getGraphics()).drawImage(frame.getImage().getSubimage(wCut, nCut, width, height), 0, 0, null);
+                cutImage.getGraphics().drawImage(frame.getImage().getSubimage(wCut, nCut, width, height), 0, 0, null);
 
                 resetButtonActionPerformed();
 
