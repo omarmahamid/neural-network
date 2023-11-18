@@ -3,6 +3,7 @@ package org.neural.network.testermodule;
 import org.neural.network.mathlib.algebra.Matrix;
 import org.neural.network.mathlib.algebra.Vector;
 import org.neural.network.neuralnetlib.io.NetworkIO;
+import org.neural.network.neuralnetlib.io.Resource;
 import org.neural.network.neuralnetlib.options.cost.CrossEntropyCostFunction;
 import org.neural.network.neuralnetlib.options.regularization.L2Regularization;
 import org.neural.network.neuralnetlib.trainer.StochasticGradientDescentTrainer;
@@ -88,10 +89,12 @@ public class ButtonPanel extends JPanel {
     private void trainButtonActionPerformed() {
         if (sgdt == null) {
             sgdt = new StochasticGradientDescentTrainer(frame.getNet(), new CrossEntropyCostFunction(), new L2Regularization());
-            sgdt.setTrainingData(MNISTLoader.importData("/Users/omarmahamid/Documents/GitHub/neural-network/src/main/resources/train-images-idx3-ubyte.gz"),
-                    MNISTLoader.importData("/Users/omarmahamid/Documents/GitHub/neural-network/src/main/resources/train-labels-idx1-ubyte.gz"));
-            sgdt.setTestData(MNISTLoader.importData("/Users/omarmahamid/Documents/GitHub/neural-network/src/main/resources/t10k-images-idx3-ubyte.gz"),
-                    MNISTLoader.importData("/Users/omarmahamid/Documents/GitHub/neural-network/src/main/resources/t10k-labels-idx1-ubyte.gz"));
+
+            sgdt.setTrainingData(MNISTLoader.importData(new Resource("train-images-idx3-ubyte.gz").getAbsoluteFileName()),
+                    MNISTLoader.importData(new Resource("train-labels-idx1-ubyte.gz").getAbsoluteFileName()));
+
+            sgdt.setTestData(MNISTLoader.importData(new Resource("t10k-images-idx3-ubyte.gz").getAbsoluteFileName()),
+                    MNISTLoader.importData(new Resource("t10k-labels-idx1-ubyte.gz").getAbsoluteFileName()));
         }
         sgdt.train(2, 0.5, 5.0, 10, true);
     }
@@ -101,8 +104,11 @@ public class ButtonPanel extends JPanel {
      * calculated results.
      */
     private void testButtonActionPerformed() {
+
         Random rand = new Random();
-        Vector[] data = MNISTLoader.importData("/Users/omarmahamid/Documents/GitHub/neural-network/src/main/resources/t10k-images-idx3-ubyte.gz");
+
+        Vector[] data = MNISTLoader.importData(new Resource("t10k-images-idx3-ubyte.gz").getAbsoluteFileName());
+
         new Thread(() -> {
             System.out.println("\n---Testing Network---");
             for (int j = 0; j < data.length; j += rand.nextInt(200) + 400) {
@@ -121,14 +127,14 @@ public class ButtonPanel extends JPanel {
      * Saves the current neural network.
      */
     private void saveButtonActionPerformed() {
-        NetworkIO.saveNetwork("/Users/omarmahamid/Documents/GitHub/neural-network/src/main/resources/network.dat", frame.getNet());
+        NetworkIO.saveNetwork(new Resource("network.dat").getAbsoluteFileName(), frame.getNet());
     }
 
     /**
      * Loads some saved neural network.
      */
     private void loadButtonActionPerformed() throws Exception {
-        frame.setNet(NetworkIO.loadNetwork("/Users/omarmahamid/Documents/GitHub/neural-network/src/main/resources/network.dat"));
+        frame.setNet(NetworkIO.loadNetwork(new Resource("network.dat").getAbsoluteFileName()));
     }
 
     /**
