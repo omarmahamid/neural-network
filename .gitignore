@@ -10,7 +10,6 @@ DEV_VPN.ppk
 rebel-remote.xml
 product-bizpack/config/*
 app-resources/.idea/
-personetics.properties
 out/
 
 **/asciidoctor-cache/
