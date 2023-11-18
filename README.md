@@ -1,5 +1,5 @@
 # neural-network
-neural network from scratch - written in pure java
+neural network from scratch - written in pure java 21
 
 
 

@@ -1,0 +1,25 @@
+**/target/
+.project
+.classpath
+rebel.xml
+.settings/
+**/.settings/
+*.iml
+**/.idea/
+DEV_VPN.ppk
+rebel-remote.xml
+product-bizpack/config/*
+app-resources/.idea/
+personetics.properties
+out/
+
+**/asciidoctor-cache/
+**/.asciidoctor/
+**/docs/**/*.html
+**/docs/**/*.pdf
+
+# DO NOT REMOVE THIS - THIS FILE SHOULD NOT BE COMMITTED - IT GENERATED DURING BUILD with -Dmodules=all
+pack_dscr.properties
+*.versionsBackup
+app.properties
+git.properties

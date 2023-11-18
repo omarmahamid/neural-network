@@ -61,7 +61,11 @@ public class ButtonPanel extends JPanel {
             saveButtonActionPerformed();
         });
         loadButton.addActionListener((ActionEvent ae) -> {
-            loadButtonActionPerformed();
+            try {
+                loadButtonActionPerformed();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         });
         testButton.addActionListener((ActionEvent ae) -> {
             testButtonActionPerformed();
@@ -129,7 +133,7 @@ public class ButtonPanel extends JPanel {
     /**
      * Loads some saved neural network.
      */
-    private void loadButtonActionPerformed() {
+    private void loadButtonActionPerformed() throws Exception {
         frame.setNet(NetworkIO.loadNetwork("/Users/omarmahamid/Documents/GitHub/neural-network/src/main/resources/network.dat"));
     }
 

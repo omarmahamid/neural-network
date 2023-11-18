@@ -29,9 +29,9 @@ public class NetworkIO {
      * @param file filename of a neural network e.g. "network.dat"
      * @return the loaded neural network with all its weights and biases
      */
-    public static NeuralNetwork loadNetwork(String file) {
-        Vector[] biases = null;
-        Matrix[] weights = null;
+    public static NeuralNetwork loadNetwork(String file) throws Exception {
+        Vector[] biases;
+        Matrix[] weights;
         ActivationFunction activationFunction = null;
         int size = 0;
         try {
@@ -76,6 +76,7 @@ public class NetworkIO {
 
             }
         } catch (IOException ex) {
+            throw new Exception("Exception while creating neural network");
         }
         return new NeuralNetwork(weights, biases, size, activationFunction);
     }
