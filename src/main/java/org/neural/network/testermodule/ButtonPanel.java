@@ -254,6 +254,7 @@ public class ButtonPanel extends JPanel {
      * @return vector containing y and x value of center
      */
     private Vector centerOfMassOfPixels(BufferedImage image) {
+        Vector result = null;
         int iCount = 0, jCount = 0;
         int iVal = 0, jVal = 0;
         for (int i = 0; i < image.getHeight(); i++) {
@@ -266,7 +267,10 @@ public class ButtonPanel extends JPanel {
                 }
             }
         }
-        return new Vector(iVal / iCount, jVal / jCount);
+        if(iCount != 0 && jCount != 0) {
+            result = new Vector(iVal / iCount, jVal / jCount);
+        }
+        return result;
     }
 
     /**
