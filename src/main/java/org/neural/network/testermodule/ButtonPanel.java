@@ -51,15 +51,12 @@ public class ButtonPanel extends JPanel {
         JButton testButton = new JButton("Test");
         predictButton = new JButton("Predict");
 
-        resetButton.addActionListener((ActionEvent ae) -> {
-            resetButtonActionPerformed();
-        });
-        trainButton.addActionListener((ActionEvent ae) -> {
-            trainButtonActionPerformed();
-        });
-        saveButton.addActionListener((ActionEvent ae) -> {
-            saveButtonActionPerformed();
-        });
+        resetButton.addActionListener((ActionEvent ae) -> resetButtonActionPerformed());
+
+        trainButton.addActionListener((ActionEvent ae) -> trainButtonActionPerformed());
+
+        saveButton.addActionListener((ActionEvent ae) -> saveButtonActionPerformed());
+
         loadButton.addActionListener((ActionEvent ae) -> {
             try {
                 loadButtonActionPerformed();
@@ -67,12 +64,9 @@ public class ButtonPanel extends JPanel {
                 throw new RuntimeException(e);
             }
         });
-        testButton.addActionListener((ActionEvent ae) -> {
-            testButtonActionPerformed();
-        });
-        predictButton.addActionListener((ActionEvent ae) -> {
-            predictButtonActionPerformed();
-        });
+
+        testButton.addActionListener((ActionEvent ae) -> testButtonActionPerformed());
+        predictButton.addActionListener((ActionEvent ae) -> predictButtonActionPerformed());
 
         add(loadButton);
         add(saveButton);
