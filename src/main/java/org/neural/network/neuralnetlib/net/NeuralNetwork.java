@@ -74,6 +74,10 @@ public class NeuralNetwork {
      * @param in input values organized in a matrix out of input columns
      * @return result of the output layer. Every input column has its
      * corresponding output column in the returned matrix
+     *
+     * Forward Propagation:
+     *  yi = bj + Sum(Xi * Wij) for i,j in Wnxm
+     * 
      */
     public Matrix feedforward(Matrix in) {
         lastActivations[0] = in;
