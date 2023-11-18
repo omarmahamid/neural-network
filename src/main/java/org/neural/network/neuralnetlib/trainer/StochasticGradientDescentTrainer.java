@@ -48,7 +48,7 @@ public class StochasticGradientDescentTrainer {
      * Trains the network using the training and test data. Training is repeated
      * for the number of epochs.
      *
-     * @param epochs number of training iterations
+     * @param iteration number of training iterations
      * @param learningRate learning rate determines how fast the weights in the
      * network are changed
      * @param lambda strength of regularization
@@ -59,16 +59,16 @@ public class StochasticGradientDescentTrainer {
      * the whole test data. Slows down training but gives you important
      * insights.
      */
-    public void train(int epochs, double learningRate, double lambda, int batchSize, boolean evaluate) {
+    public void train(int iteration, double learningRate, double lambda, int batchSize, boolean evaluate) {
         if (trainingIn == null || trainingOut == null || testIn == null || testOut == null) {
             System.out.println("\n--- Training was cancelled because of missing data - Please specify training and test data ---");
         }
 
         System.out.printf("%n---Training Network---%n"
                         + "Training data: %d, Test data: %d, Batch size: %d%n"
-                        + "Epochs: %d, Learning rate: %.2f, Lambda: %.2f%n%n",
-                trainingIn.length, testIn.length, batchSize, epochs, learningRate, lambda);
-        for (int i = 0; i < epochs; i++) {
+                        + "iteration: %d, Learning rate: %.2f, Lambda: %.2f%n%n",
+                trainingIn.length, testIn.length, batchSize, iteration, learningRate, lambda);
+        for (int i = 0; i < iteration; i++) {
             trainEpoch(i, learningRate, lambda, batchSize, evaluate);
         }
         System.out.printf("Result:%n"
